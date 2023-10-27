@@ -14,6 +14,7 @@ export default {
                 this.name = null
                 this.age = null
                 this.job = null
+                this.$parent.getPeople()
             })
         }
     }

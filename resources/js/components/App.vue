@@ -1,15 +1,13 @@
 <script>
-import CreateComponent from './Person/CreateComponent.vue';
 import IndexComponent from './Person/IndexComponent.vue';
 
 export default {
-    components: { CreateComponent, IndexComponent }
+    components: { IndexComponent },
 }
 </script>
 
 <template>
     <div>
-        <CreateComponent></CreateComponent>
-        <IndexComponent></IndexComponent>
+        <IndexComponent ref="index"></IndexComponent>
     </div>
 </template>

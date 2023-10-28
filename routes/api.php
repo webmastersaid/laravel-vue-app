@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('people')->namespace('App\Http\Controllers')->group(function () {
     Route::namespace('Person')->group(function () {
+        Route::get('/{person}', ShowController::class);
         Route::post('/', StoreController::class);
         Route::get('/', IndexController::class);
         Route::patch('/{person}', UpdateController::class);

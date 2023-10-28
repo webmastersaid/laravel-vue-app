@@ -15,12 +15,17 @@ export default {
                     this.$router.push({ name: 'people.index' })
                 })
         }
+    },
+    computed:{
+        isDisabled() {
+            return this.name && this.age
+        }
     }
-
 }
 </script>
 <template>
     <div class="container pt-5">
+        <RouterLink :to="{ name: 'people.index' }">Go to people list</RouterLink>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" v-model="name" id="name" placeholder="Bob">
@@ -34,7 +39,7 @@ export default {
             <input type="text" class="form-control" v-model="job" id="job" placeholder="Web developer">
         </div>
         <div class="mb-3">
-            <button type="button" class="btn btn-primary" @click.prevent="store">Add</button>
+            <button type="button" class="btn btn-primary" @click.prevent="store" :disabled="!isDisabled">Add</button>
         </div>
     </div>
 </template>

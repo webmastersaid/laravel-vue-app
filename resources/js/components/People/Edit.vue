@@ -22,6 +22,11 @@ export default {
     },
     mounted() {
         this.getPerson()
+    },
+    computed:{
+        isDisabled() {
+            return this.person.name && this.person.age
+        }
     }
 }
 </script>
@@ -42,7 +47,7 @@ export default {
                 <input type="text" class="form-control" v-model="person.job" id="job" placeholder="Web developer">
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-outline-primary" @click.prevent="update">Update</button>
+                <button type="button" class="btn btn-outline-primary" @click.prevent="update" :disabled="!isDisabled">Update</button>
                 <RouterLink class="btn btn-outline-secondary mx-2" :to="{ name: 'people.index' }">Cancel</RouterLink>
             </div>
         </div>

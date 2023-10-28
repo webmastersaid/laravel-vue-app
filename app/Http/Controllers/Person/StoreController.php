@@ -12,6 +12,6 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         $person = Person::create($data);
-        return $person;
+        return response([]);
     }
 }

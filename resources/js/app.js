@@ -1,9 +1,8 @@
 import './bootstrap'
 import { createApp } from 'vue'
-import router from './router'
 import App from './components/App.vue'
-import Index from './components/Index.vue'
+import router from './router'
 
-const app = createApp(Index)
+const app = createApp(App)
 app.use(router)
 app.mount('#app')

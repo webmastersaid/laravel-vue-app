@@ -1,20 +1,12 @@
 <script>
 export default {
-    data() {
-        return {
-            person: null,
-        }
-    },
-    methods: {
-        getPerson() {
-            axios.get(`/api/people/${this.$route.params.id}`)
-                .then(res => {
-                    this.person = res.data.data
-                })
-        },
-    },
     mounted() {
-        this.getPerson()
+        this.$store.dispatch('getPerson', this.$route.params.id)
+    },
+    computed: {
+        person() {
+            return this.$store.getters.person
+        }
     }
 }
 </script>
@@ -47,10 +39,12 @@ export default {
                 </tr>
                 <tr>
                     <td>
-                        <RouterLink class="btn btn-outline-primary mx-2" :to="{ name: 'people.edit', params: { id: person.id } }">
+                        <RouterLink class="btn btn-outline-primary mx-2"
+                            :to="{ name: 'people.edit', params: { id: person.id } }">
                             Edit
                         </RouterLink>
-                        <button class="btn btn-outline-danger mx-2" @click.prevent="deletePerson(person.id)">Delete</button>
+                        <button class="btn btn-outline-danger mx-2"
+                            @click.prevent="$store.dispatch('destroy', person.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

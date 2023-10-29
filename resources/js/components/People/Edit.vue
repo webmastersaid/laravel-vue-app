@@ -1,32 +1,15 @@
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
-    data() {
-        return {
-            person: null,
-        }
-    },
-    methods: {
-        getPerson() {
-            axios.get(`/api/people/${this.$route.params.id}`)
-                .then(res => {
-                    this.person = res.data.data
-                })
-        },
-        update() {
-            axios.patch(`/api/people/${this.$route.params.id}`, { name: this.person.name, age: this.person.age, job: this.person.job })
-                .then(res => {
-                    this.$router.push({ name: 'people.show', params: { id: this.$route.params.id } })
-                })
-        }
-    },
     mounted() {
-        this.getPerson()
+        this.$store.dispatch('getPerson', this.$route.params.id)
     },
     computed:{
-        isDisabled() {
-            return this.person.name && this.person.age
-        }
+        ...mapGetters({
+            isDisabled: 'isDisabled',
+            person: 'person',
+        })
     }
 }
 </script>
@@ -47,7 +30,7 @@ export default {
                 <input type="text" class="form-control" v-model="person.job" id="job" placeholder="Web developer">
             </div>
             <div class="mb-3">
-                <button type="button" class="btn btn-outline-primary" @click.prevent="update" :disabled="!isDisabled">Update</button>
+                <button type="button" class="btn btn-outline-primary" @click.prevent="$store.dispatch('update', person)" :disabled="!isDisabled">Update</button>
                 <RouterLink class="btn btn-outline-secondary mx-2" :to="{ name: 'people.index' }">Cancel</RouterLink>
             </div>
         </div>

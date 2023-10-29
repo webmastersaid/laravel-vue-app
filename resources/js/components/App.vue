@@ -1,11 +1,11 @@
 <script>
-import IndexComponent from './Person/IndexComponent.vue';
+import Index from './Index.vue';
 
 export default {
-    components: { IndexComponent },
+    components: { Index },
 }
 </script>
 
 <template>
-    <IndexComponent></IndexComponent>
+    <Index></Index>
 </template>

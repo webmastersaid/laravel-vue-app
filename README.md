@@ -1,10 +1,10 @@
-# CRUD Person (Laravel + Vue)
+## CRUD Person (Laravel + Vue)
 
-## 1. Rename file
-**.env.example** to **.env**
+1. Rename file
+`.env.example` to `.env`
 
-## 2. Install dependencies
+2. Install dependencies
 `composer install` and `npm install`
 
-## 3. Run project
+3. Run project
 `php artisan serve` and `npm run dev`
